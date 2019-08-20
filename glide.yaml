@@ -1,0 +1,8 @@
+package: github.com/tiwarirabi/go-starter-mysql
+import:
+    - package: golang.org/x/net
+      version: 57efc9c3d9f91fb3277f8da1cff370539c4d3dc5
+      subpackages:
+          - context
+          - context/ctxhttp
+          - html

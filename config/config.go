@@ -1,30 +1,31 @@
 package api
 
 import (
+	"os"
 	"fmt"
-
-	"github.com/narup/gconfig"
+	"errors"
 )
 
-func ReadConfig() (*gconfig.GConfig, error) {
-	//load configuration
-	config , err := gconfig.Load()
-	if err != nil {
-		fmt.Println("Error loading configuration files.")
-		return nil, err
+type Config struct {
+	AppPort		string
+}
+
+// ReadConfig reads configuration values from environment variables.
+func ReadConfig() (*Config, error) {
+
+	c := new(Config)
+
+	c.AppPort = os.Getenv("APP_PORT")
+
+	if c.AppPort != "" {
+		fmt.Println("Error loading configuration.")
+		return nil, errors.New("Error loading configuration. Please check your environment variables.")
 	}
-	fmt.Println("Success loading configuration files.")
-	return config, nil
+
+	fmt.Println("Success loading configuration.")
+	return c, nil
 }
 
 func SetupDatabase() {
-	//setup database
-	// hostURL := util.Config("db.main.url")
-	// cfg := gmgo.DbConfig{HostURL: hostURL, DBName: util.Config("db.main.name")}
-	// _, err := data.SetupMongoDb(cfg)
-	// if err != nil {
-	// 	notification.PostOnMonitoringChannel(fmt.Sprintf("[ERROR][LOAD]:: %s", err))
-	// 	log.Panicf("Error connecting to the database %s", err.Error())
-	// 	return
-	// }
+
 }

@@ -19,7 +19,7 @@ func Start() {
 
 	config.SetupDatabase()
 
-	port := fmt.Sprintf(":%s", c.GetString("app.port"))
+	port := fmt.Sprintf(":%s", c.AppPort)
 	
 	fmt.Println("Starting API Server.")
 	fmt.Println("Press ctrl+E to stop the server.")

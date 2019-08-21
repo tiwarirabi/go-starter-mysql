@@ -17,8 +17,8 @@ func ReadConfig() (*Config, error) {
 
 	c.AppPort = os.Getenv("APP_PORT")
 
-	if c.AppPort != "" {
-		fmt.Println("Error loading configuration.")
+	if c.AppPort == "" {
+		fmt.Printf("Error loading configuration. %s \n", os.Getenv("APP_PORT"))
 		return nil, errors.New("Error loading configuration. Please check your environment variables.")
 	}
 

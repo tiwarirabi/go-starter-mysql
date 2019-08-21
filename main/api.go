@@ -21,8 +21,8 @@ func Start() {
 
 	port := fmt.Sprintf(":%s", c.AppPort)
 	
-	fmt.Println("Starting API Server.")
-	fmt.Println("Press ctrl+E to stop the server.")
+	fmt.Printf("Starting API Server at http://localhost:%s \n", c.AppPort)
+	fmt.Println("Press ctrl+C to stop the server.")
 
 	srv := &http.Server{
 		// Handler:      Handlers(),
@@ -32,13 +32,8 @@ func Start() {
 	}
 
 	if serr := srv.ListenAndServe(); serr != nil {
-		fmt.Println("Error starting server")
+		fmt.Printf("Error starting server %s", serr)
 	}
 }
 
-
-//Handlers phil router with all the handlers
-// func Handlers() *pweb.PhilRouter {
-// 	ctx := context.Background()
-// 	return controller.SetupRoutes(ctx)
-// }
+//TODO: Create route handlers
